@@ -1,0 +1,62 @@
+# Atm_Banking_system
+
+class ATM:
+    def __init__(self, name, acnt_no, acnt_bal):
+        self.name = name
+        self.acnt_no = acnt_no
+        self.acnt_bal = float(acnt_bal)
+
+    def give_their_acnt_details(self):
+        print(f"hi your name is {self.name} your account number is {self.acnt_no} and your account balance is {self.acnt_bal}")
+
+    def issuing_amnt(self, withdraw_amount):
+        self.withdraw_amount = float(withdraw_amount)
+        amount = float(input("Enter the amount you need to withdraw"))
+        if self.withdraw_amount >= self.acnt_bal:
+            print(
+                f"sorry your request could not be  processed, you have insufficient funds")
+
+        else:
+            self.acnt_bal = self.acnt_bal - self.withdraw_amount
+            print("Thankyou your request is processed , collect your cash : rupees", self.acnt_bal)
+
+
+    def depositamnt(self, depositamount):
+        depositamount = float(input("Enter the amount you need to deposit"))
+        self.depositamount = depositamount
+        self.acnt_bal = self.depositamount + self.acnt_bal
+        print("Thankyou your cash is being deposited and your total balance is :rupees", depositamount, "and total balance is : rupees", self.acnt_bal)
+
+
+
+class acnt_holder:
+    def reqamount(self):
+        amount = float(input("Enter the amount you need to withdraw"))
+        self.amount = input()
+        return self.amount
+
+    def depositamount(self):
+        amnt = float(input("Enter the amount you need to deposit"))
+        self.amnt = input()
+        return self.amnt
+
+
+
+salem_branch = ATM("Thamizh", 98674566684, 50000.50)
+acnt_Tamil = acnt_holder()
+
+
+while True:
+    print("select the options below ")
+    print("\n 1- display the account details \n 2- request amount for withdrawl \n 3- amount deposit \n 4- exit")
+    option = int(input())
+    if option == 1:
+        salem_branch.give_their_acnt_details()
+    if option == 2:
+        salem_branch.issuing_amnt(acnt_Tamil.reqamount())
+    if option == 3:
+        salem_branch.depositamnt(acnt_Tamil.depositamount())
+    elif option == 4:
+        break
+
+
